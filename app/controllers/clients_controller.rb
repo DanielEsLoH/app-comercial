@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
       @cliente = Client.new(client_params)
 
       respond_to do |format|
-          if @cliente.save
+            if @cliente.save
               format.json { head :no_content }
               format.js
             else
