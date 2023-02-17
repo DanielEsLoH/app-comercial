@@ -22,7 +22,7 @@
         <tbody>
             <% @productos.each do |prod| %>
             <tr id="producto_<%= prod.id %>" >
-                <td><%= image_tag(prod.image_product.url, size: "50x50", class: "rounded-circle") if prod.imagen? %></td>
+                <td><%= image_tag(prod.imagen.url, size: "50x50", class: "rounded-circle") if prod.imagen? %></td>
                 <td><%= prod.nombre %></td>
                 <td><%= prod.existencia %></td>
                 <td>$<%= prod.precio %></td>

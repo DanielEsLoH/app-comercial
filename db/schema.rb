@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_10_023215) do
+ActiveRecord::Schema.define(version: 2023_02_16_164859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2023_02_10_023215) do
     t.string "descripcion"
     t.integer "existencia"
     t.decimal "precio"
-    t.bigint "categories_id"
-    t.bigint "suppliers_id"
+    t.bigint "category_id"
+    t.bigint "supplier_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["categories_id"], name: "index_products_on_categories_id"
-    t.index ["suppliers_id"], name: "index_products_on_suppliers_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "sales", force: :cascade do |t|
@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 2023_02_10_023215) do
     t.index ["supplier_id"], name: "index_warehouse_records_on_supplier_id"
   end
 
-  add_foreign_key "products", "categories", column: "categories_id"
-  add_foreign_key "products", "suppliers", column: "suppliers_id"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "suppliers"
   add_foreign_key "warehouse_records", "products"
   add_foreign_key "warehouse_records", "suppliers"
 end
